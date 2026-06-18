@@ -1,0 +1,109 @@
+═══════════════════════════════════════════════════════════════════════════════
+  QUICK START - 5 MINUTES TO WORKING FIRMWARE
+═══════════════════════════════════════════════════════════════════════════════
+
+STEP 1: EXTRACT ZIP
+────────────────────────────────────────────────────────────────────────────
+Extract OTABootAnimation-Ready.zip to:
+  ~/Documents/PlatformIO/Projects/
+
+Result: ~/Documents/PlatformIO/Projects/OTABootAnimation-Ready/
+
+STEP 2: OPEN IN VS CODE
+────────────────────────────────────────────────────────────────────────────
+1. Open VS Code
+2. File → Open Folder
+3. Select: OTABootAnimation-Ready
+4. Wait for indexing...
+
+STEP 3: EDIT WiFi (OPTIONAL - Already Set!)
+────────────────────────────────────────────────────────────────────────────
+File: include/Secrets.h
+
+Current settings:
+  WIFI_SSID "PJ1"
+  WIFI_PASSWORD "qwerty1234"
+  OTA_PASSWORD "admin"
+
+Only change if you need different WiFi!
+
+STEP 4: BUILD
+────────────────────────────────────────────────────────────────────────────
+Open Terminal (Ctrl+`)
+
+  pio run
+
+Expected output:
+  ✓ Compiling src/main.cpp
+  ✓ Compiling src/display/OTABootAnimation.cpp
+  ✓ Linking
+  ✓ Built successfully!
+
+STEP 5: CONNECT & UPLOAD
+────────────────────────────────────────────────────────────────────────────
+1. Connect CYD via USB cable
+2. Run: pio run --target upload
+   OR use VS Code: Ctrl+Alt+U
+
+Watch for:
+  ✓ Uploading...
+  ✓ Upload complete!
+
+STEP 6: MONITOR & VERIFY
+────────────────────────────────────────────────────────────────────────────
+Run: pio device monitor
+OR use VS Code: Ctrl+Alt+S
+
+You should see:
+  [Setup] Initializing TFT display...
+  [Setup] ✓ TFT initialized
+  [Setup] Starting WiFi...
+  [Setup] Connecting to: PJ1
+  ...
+  [WiFi] Connected! IP: 192.168.x.x
+  [OTA] Ready for firmware updates
+
+═══════════════════════════════════════════════════════════════════════════════
+
+✅ DONE! Your CYD display now has OTA boot animations! 🎉
+
+Next step: Your display will show beautiful animations during firmware updates!
+
+═══════════════════════════════════════════════════════════════════════════════
+
+WIRELESS OTA UPDATES
+────────────────────────────────────────────────────────────────────────────
+Once WiFi is connected, update wirelessly:
+
+1. Edit platformio.ini:
+   upload_protocol = espota
+   upload_port = 192.168.x.x  (your device IP)
+
+2. Upload:
+   pio run --target upload
+
+Your display will show beautiful OTA animation sequence! ✨
+
+═══════════════════════════════════════════════════════════════════════════════
+
+TROUBLESHOOTING
+────────────────────────────────────────────────────────────────────────────
+
+Build fails?
+  → pio run --target clean && pio run
+
+WiFi won't connect?
+  → Check SSID/password in include/Secrets.h
+
+Display shows nothing?
+  → Check GPIO21 (backlight) is connected to VCC
+  → Verify SPI pins: 13, 12, 14, 15, 2, 21
+
+Libraries not downloading?
+  → pio lib update && pio run
+
+═══════════════════════════════════════════════════════════════════════════════
+
+You're all set! Happy building! 🚀
+
+═══════════════════════════════════════════════════════════════════════════════

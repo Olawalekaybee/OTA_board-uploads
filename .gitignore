@@ -1,0 +1,66 @@
+# ═══════════════════════════════════════════════════════════════
+#  GITIGNORE FOR AGRINODE CYD PLATFORMIO PROJECT
+# ═══════════════════════════════════════════════════════════════
+
+# PlatformIO Build Directory
+.pio/
+.platformio/
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# IDE
+.idea/
+*.swp
+*.swo
+*~
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.pytest_cache/
+
+# Build artifacts
+*.o
+*.a
+*.so
+*.dylib
+*.dll
+*.exe
+
+# Temporary files
+*.tmp
+*.bak
+*.orig
+
+# ═══════════════════════════════════════════════════════════════
+#  SECRETS & CREDENTIALS
+#
+#  NEVER COMMIT THESE FILES!
+# ═══════════════════════════════════════════════════════════════
+include/Secrets.h
+.env
+.env.local
+
+# ═══════════════════════════════════════════════════════════════
+#  Generated Files (by TFT_eSPI or other libraries)
+# ═══════════════════════════════════════════════════════════════
+lib/TFT_eSPI/User_Setup.h
+lib/TFT_eSPI/User_Setups/
+
+# ═══════════════════════════════════════════════════════════════
+#  OS-Specific Files
+# ═══════════════════════════════════════════════════════════════
+.DS_Store
+Thumbs.db
+*.DS_Store
+
+# ═══════════════════════════════════════════════════════════════
+#  Backups
+# ═══════════════════════════════════════════════════════════════
+*.backup
+*.bckp
+*~
